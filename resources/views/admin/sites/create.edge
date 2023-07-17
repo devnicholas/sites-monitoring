@@ -1,0 +1,48 @@
+@layout('layouts/admin')
+
+@set('title', 'Sites')
+
+@section('body')
+<div class="container grid px-6 mx-auto">
+    <div class="flex justify-between items-center">
+        <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+            Adicionar
+        </h2>
+    </div>
+
+
+    <form method="POST" action="{{ route('admin_sites.store')}}"
+        class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+        <label class="block text-sm">
+            <span class="text-gray-700 dark:text-gray-400">Nome</span>
+            <input name="name" class="form-text" placeholder="My Personal Website"
+                value="{{ flashMessages.has('name') ? flashMessages.get('name') : '' }}" />
+        </label>
+        <label class="block text-sm mt-4">
+            <span class="text-gray-700 dark:text-gray-400">Url</span>
+            <input name="url" type="url" class="form-text" placeholder="https://mywebsite.com"
+                value="{{ flashMessages.has('url') ? flashMessages.get('url') : '' }}" required />
+        </label>
+        <label class="block mt-4 text-sm">
+            <span class="text-gray-700 dark:text-gray-400">
+                Intervalo
+            </span>
+            <select name="interval"
+                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                <option value="60">60 Minutos</option>
+                <option value="30">30 Minutos</option>
+                <option value="10">10 Minutos</option>
+            </select>
+            <span class="text-xs text-gray-600 dark:text-gray-400">
+                Intervalo entre as verificações no seu site
+            </span>
+        </label>
+
+        <div class="mt-4 flex justify-end">
+            <button class="btn-default">Salvar</button>
+        </div>
+    </form>
+</div>
+
+
+@end

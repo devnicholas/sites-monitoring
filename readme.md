@@ -1,14 +1,7 @@
-# Adonis Boilerplate
-This is a boilerplate for AdonisJS with this features:
+# Sites Monitoring
+This project is a service for monitoring of websites pages. Receive notifications when yours sites change the response status code. 
 
-- Admin inteface baseed on [Windmill](https://github.com/estevanmaito/windmill-dashboard)
-- [TailwindCSS](https://tailwindcss.com/)
-- [AlpineJS](https://alpinejs.dev/)
-- Icons by [Heroicons](https://heroicons.dev/)
-- Authentication system
-- Users CRUD
-- Forgot Password
-- Users roles (admin and member)
+Until now this notifications are sended by e-mail, but in future we make a optional integration with Telegram too.
 
 ## Setup
 Install dependencies

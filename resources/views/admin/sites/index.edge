@@ -1,14 +1,14 @@
 @layout('layouts/admin')
 
-@set('title', 'Usuários')
+@set('title', 'Sites')
 
 @section('body')
 <div class="container grid px-6 mx-auto">
     <div class="flex justify-between items-center">
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Usuários
+            Sites
         </h2>
-        <a href="{{ route('admin_users.create')}}" class="btn-default">Adicionar</a>
+        <a href="{{ route('admin_sites.create')}}" class="btn-default">Adicionar</a>
     </div>
 
 
@@ -19,32 +19,37 @@
                     <tr
                         class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                         <th class="px-4 py-3">Nome</th>
-                        <th class="px-4 py-3">E-mail</th>
-                        <th class="px-4 py-3">Data de cadastro</th>
+                        <th class="px-4 py-3">URL</th>
+                        <th class="px-4 py-3">Intervalo</th>
                         <th class="px-4 py-3"></th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                    @each(user in users)
+                    @each(site in sites)
                     <tr class="text-gray-700 dark:text-gray-400">
                         <td class="px-4 py-3">
-                            {{ user.name }}
+                            {{ site.name }}
                         </td>
                         <td class="px-4 py-3 text-sm">
-                            {{ user.email }}
+                            {{ site.url }}
                         </td>
                         <td class="px-4 py-3 text-sm">
-                            {{ user.createdAt.toFormat('dd/MM/yyyy') }}
+                            {{ site.interval }} minutos
                         </td>
                         <td class="px-4 py-3">
                             <div class="flex items-center space-x-4 text-sm">
+                                <a href="{{ route('admin_sites.show', { id: site.id })}}"
+                                    class="action-item"
+                                    aria-label="Show">
+                                    @!svg.show()
+                                </a>
                                 <a
-                                    href="{{ route('admin_users.edit', { id: user.id })}}"
+                                    href="{{ route('admin_sites.edit', { id: site.id })}}"
                                     class="action-item"
                                     aria-label="Edit">
                                     @!svg.edit()
                                 </a>
-                                <form action="{{ route('admin_users.destroy', { id: user.id }, { qs: { _method: 'DELETE' }})}}" method="post">
+                                <form action="{{ route('admin_sites.destroy', { id: site.id }, { qs: { _method: 'DELETE' }})}}" method="post">
                                     <button
                                     class="action-item"
                                     aria-label="Delete">

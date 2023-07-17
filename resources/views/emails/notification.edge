@@ -1,0 +1,10 @@
+<h1> Olá, {{ name }} </h1>
+<p>
+    Você possui uma nova notificação em nosso site. Veja detalhes a seguir.
+</p>
+<p>
+    {{notification.text}}
+</p>
+@if(action)
+<p>Para ver mais detalhes <a href="{{ action }}">clique aqui</a>.</p>
+@end

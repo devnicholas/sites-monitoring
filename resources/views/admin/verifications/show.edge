@@ -1,0 +1,43 @@
+@layout('layouts/admin')
+
+@set('title', 'Verificações')
+
+@section('body')
+<div class="container grid px-6 mx-auto">
+    <div class="flex justify-between items-center">
+        <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+            Verificações
+        </h2>
+        <a class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+            href="{{site.url}}" target="_blank">
+            @!svg.openOutside()
+        </a>
+    </div>
+
+
+    <div class="grid gap-6 mb-8">
+        <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 text-gray-700 dark:text-gray-200">
+            <h4 class="mb-4 font-semibold">
+                {{site.name}} ({{site.url}})
+            </h4>
+            <p>
+                Data da verificação:
+                <span class="font-semibold">{{ verification.createdAt.toFormat('dd/MM/yyyy HH:mm') }}</span>
+            </p>
+            <p>
+                Status: <span class="font-semibold">{{ verification.status }}</span>
+            </p>
+            @if(verification.message)
+            <p>Mensagem: <span class="font-semibold">{{ verification.message }}</span></p>
+            @end
+        </div>
+    </div>
+
+    <p class="mt-4 text-gray-700 dark:text-gray-400 text-sm">
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" target="_blank" class="underline">Clique aqui</a>
+        para ver o significado dos códigos de status.
+    </p>
+</div>
+
+
+@end

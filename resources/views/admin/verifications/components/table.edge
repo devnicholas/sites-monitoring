@@ -1,0 +1,50 @@
+<div class="w-full overflow-x-auto">
+    <table class="w-full whitespace-no-wrap">
+        <thead>
+            <tr
+                class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                <th class="px-4 py-3">Site</th>
+                <th class="px-4 py-3">Status</th>
+                <th class="px-4 py-3">Data</th>
+                <th class="px-4 py-3"></th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+            @each(verification in verifications)
+            <tr class="text-gray-700 dark:text-gray-400">
+                <td class="px-4 py-3">
+                    <a href="{{ route('admin_sites.show', { id: verification.site.id}) }}" class="underline">
+                        {{ verification.site.name }}
+                    </a>
+                </td>
+                <td class="px-4 py-3 text-sm">
+                    @set('badgeClass', 'default')
+                    @if(verification.status >= 200 && verification.status < 300) 
+                        @set('badgeClass', 'success' )
+                    @elseif(verification.status>= 500 && verification.status < 600) 
+                        @set('badgeClass', 'error' )
+                    @elseif(verification.status>= 400 && verification.status < 500) 
+                        @set('badgeClass', 'warning') 
+                    @end 
+                    <span class="badge-{{badgeClass}}">
+                        {{ verification.status }}
+                    </span>
+                </td>
+                <td class="px-4 py-3 text-sm">
+                    {{ verification.createdAt.toFormat('dd/MM/yyyy HH:mm') }}
+                </td>
+                <td class="px-4 py-3">
+                    <div class="flex items-center space-x-4 text-sm">
+                        <a href="{{ route('admin_verifications.show', { id: verification.id })}}"
+                            class="action-item"
+                            aria-label="Show">
+                            @!svg.show()
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            @end
+
+        </tbody>
+    </table>
+</div>

@@ -21,6 +21,7 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 import './routes/admin'
+import './jobs'
 
 Route.get('/', async ({ view }) => {
   return view.render('welcome')

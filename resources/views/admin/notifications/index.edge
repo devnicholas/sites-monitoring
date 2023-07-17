@@ -1,0 +1,28 @@
+@layout('layouts/admin')
+
+@set('title', 'Notificações')
+
+@section('body')
+<div class="container grid px-6 mx-auto">
+    <div class="flex justify-between items-center">
+        <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+            Notificações
+        </h2>
+    </div>
+
+    @each(notification in notifications)
+    <div class="notification-item {{ notification.opened ? '' : 'active'}}">
+        <div class="flex items-center">
+            {{ notification.text }}
+        </div>
+        @if(notification.action)
+            <a href="{{ notification.action }}">
+                Ver mais &RightArrow;
+            </a>
+        @end
+    </div>
+    @end
+</div>
+
+
+@end

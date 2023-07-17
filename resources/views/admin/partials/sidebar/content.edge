@@ -1,5 +1,7 @@
 <div class="py-4 text-gray-500 dark:text-gray-400">
-    <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="{{route('admin.main')}}">Windmill</a>
+    <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="{{route('admin.main')}}">
+        Sites Check
+    </a>
     <ul class="mt-6">
         @component('admin/components/sidebar_item', {
         active: request.matchesRoute('admin.main'),
@@ -24,6 +26,22 @@
         ]
         })
         @!svg.users()
+        @end
+
+        @component('admin/components/sidebar_item', {
+        active: request.matchesRoute('admin_sites.index'),
+        text: 'Sites',
+        href: route('admin_sites.index')
+        })
+        @!svg.site()
+        @end
+        
+        @component('admin/components/sidebar_item', {
+        active: request.matchesRoute('admin_verifications.index'),
+        text: 'Verificações',
+        href: route('admin_verifications.index')
+        })
+        @!svg.verifications()
         @end
     </ul>
 </div>

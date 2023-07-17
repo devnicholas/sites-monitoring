@@ -1,0 +1,76 @@
+@layout('layouts/admin')
+
+@set('title', 'Busca')
+
+@section('body')
+<div class="container grid px-6 mx-auto">
+    <div class="flex justify-between items-center">
+        <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+            Busca
+        </h2>
+    </div>
+
+    @if(users.length)
+    <div
+        class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div class="flex items-center justify-between mb-4">
+            <h5 class="text-xl font-bold leading-none text-gray-700 dark:text-gray-200">Usuários</h5>
+            <a href="{{ route('admin_users.index')}}"
+                class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
+                Ver todos
+            </a>
+        </div>
+        <div class="flow-root">
+            <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+                @each(user in users)
+                <li class="py-3 sm:py-4">
+                    <a href="#" class="notification-item">
+                        <div class="flex items-center">
+                            {{ user.name }}
+                        </div>
+                        <div class="inline-flex items-center text-base font-semibold text-gray-700 dark:text-gray-200">
+                            &RightArrow;
+                        </div>
+                    </a>
+                </li>
+                @end
+            </ul>
+        </div>
+    </div>
+    @end
+
+
+    @if(sites.length)
+    <div
+        class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div class="flex items-center justify-between mb-4">
+            <h5 class="text-xl font-bold leading-none text-gray-700 dark:text-gray-200">Sites</h5>
+            <a href="{{ route('admin_sites.index')}}"
+                class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
+                Ver todos
+            </a>
+        </div>
+        <div class="flow-root">
+            <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+                @each(site in sites)
+                <li class="py-3 sm:py-4">
+                    <a href="{{ route('admin_sites.show', { id: site.id })}}" class="notification-item">
+                        <div class="flex items-center">
+                            {{ site.name }}
+                        </div>
+                        <div class="inline-flex items-center text-base font-semibold text-gray-700 dark:text-gray-200">
+                            &RightArrow;
+                        </div>
+                    </a>
+                </li>
+                @end
+            </ul>
+        </div>
+    </div>
+    @end
+
+
+</div>
+
+
+@end

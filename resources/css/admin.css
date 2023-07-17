@@ -40,6 +40,40 @@
   @apply bg-yellow-50 text-yellow-500 focus:ring-yellow-400 hover:bg-yellow-200 dark:text-yellow-400 dark:bg-yellow-800;
 }
 
+.badge {
+  @apply px-2 py-1 font-semibold leading-tight rounded-full;
+}
+.badge-success {
+  @apply badge text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100;
+}
+.badge-error {
+  @apply badge text-red-700 bg-red-100 dark:bg-red-700 dark:text-red-100;
+}
+.badge-warning {
+  @apply badge text-orange-700 bg-orange-100 dark:bg-orange-700 dark:text-orange-100;
+}
+.badge-default {
+  @apply badge text-gray-700 bg-gray-100 dark:bg-gray-700 dark:text-gray-100;
+}
+
+.pagination-item {
+  @apply px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple;
+}
+.pagination-item.active {
+  @apply text-white transition-colors duration-150 bg-purple-600 border border-r-0 border-purple-600;
+}
+
+.action-item {
+  @apply flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray;
+}
+
+.notification-item {
+  @apply flex items-center justify-between p-4 mb-6 text-sm font-semibold rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple dark:bg-gray-700 dark:text-gray-200
+}
+.notification-item.active {
+  @apply text-purple-100 bg-purple-600
+}
+
 .btn-default {
   @apply px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple;
 }

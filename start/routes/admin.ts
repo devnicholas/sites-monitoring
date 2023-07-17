@@ -1,5 +1,7 @@
 import Route from '@ioc:Adonis/Core/Route'
 import AuthController from 'App/Controllers/Http/AuthController'
+import DashboardController from 'App/Controllers/Http/DashboardController'
+import SearchesController from 'App/Controllers/Http/SearchesController'
 
 Route.group(() => {
     // Admin group
@@ -15,10 +17,13 @@ Route.group(() => {
         // Auth routes
         Route.any('/logout', AuthController.logout).as('logout')
 
-        Route.get('/', async ({ view }) => {
-            return view.render('admin/main')
-        }).as('admin.main')
+        Route.get('/', DashboardController.index).as('admin.main')
+
+        Route.get('/search', SearchesController.index).as('admin.search')
 
         Route.resource('users', 'UsersController').except(['show']).as('admin.users')
-    }).middleware('auth')
+        Route.resource('sites', 'SitesController').as('admin.sites')
+        Route.resource('verifications', 'VerificationsController').only(['index', 'show']).as('admin.verifications')
+        Route.resource('notifications', 'NotificationsController').only(['index']).as('admin.notifications')
+    }).middleware(['auth', 'notification'])
 }).prefix('admin')
